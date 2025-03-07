@@ -1,4 +1,4 @@
-import { capitalize, reverseString, calculator } from './index';
+import { capitalize, reverseString, calculator, caesarCipher } from './index';
 
 test('Capitalize first letter of string', () => {
   const input = ['james', 'computer', 'france', 'hagrid', 'darth vader'];
@@ -95,5 +95,19 @@ describe('Calculator object methods', () => {
         expected[index]
       );
     });
+  });
+});
+
+test('Make Caesar cipher shift on string', () => {
+  const input = [
+    ['abc', 2],
+    ['xyz', 3],
+    ['HeLLo', 3],
+    ['Hello, World!', 3],
+  ];
+  const expected = ['cde', 'abc', 'KhOOr', 'Khoor, Zruog!'];
+
+  input.forEach((argument, index) => {
+    expect(caesarCipher(argument[0], argument[1])).toBe(expected[index]);
   });
 });

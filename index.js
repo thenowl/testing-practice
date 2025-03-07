@@ -28,4 +28,37 @@ const calculator = {
   },
 };
 
-export { capitalize, reverseString, calculator };
+const caesarCipher = (string, shift) => {
+  if (shift < -26 || shift > 26) {
+    throw new Error('Shift must be within -26 to 26.');
+  }
+
+  let charCodes = [];
+
+  for (let i = 0; i < string.length; i++) {
+    charCodes.push(string.charCodeAt(i));
+  }
+
+  charCodes = charCodes.map((letterCode) => {
+    // Upper case characters from A - Z
+    if (letterCode > 64 && letterCode < 91) {
+      return letterCode + shift > 90
+        ? letterCode + shift - 26
+        : letterCode + shift;
+    }
+
+    // Lower case characters from a - z
+    if (letterCode > 96 && letterCode < 123) {
+      return letterCode + shift > 122
+        ? letterCode + shift - 26
+        : letterCode + shift;
+    }
+
+    // Punctuation, spaces and non-alphabetical characters:
+    return letterCode;
+  });
+
+  return charCodes.map((charCode) => String.fromCharCode(charCode)).join('');
+};
+
+export { capitalize, reverseString, calculator, caesarCipher };
