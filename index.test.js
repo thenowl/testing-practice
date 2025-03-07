@@ -1,4 +1,10 @@
-import { capitalize, reverseString, calculator, caesarCipher } from './index';
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+  analyzeArray,
+} from './index';
 
 test('Capitalize first letter of string', () => {
   const input = ['james', 'computer', 'france', 'hagrid', 'darth vader'];
@@ -109,5 +115,30 @@ test('Make Caesar cipher shift on string', () => {
 
   input.forEach((argument, index) => {
     expect(caesarCipher(argument[0], argument[1])).toBe(expected[index]);
+  });
+});
+
+test('analyzeArray() to perform averaging, min, max and length checks as expected', () => {
+  const input = [
+    [1, 8, 3, 4, 2, 6],
+    [18, -2, 6, 0, 9, 11],
+  ];
+  const expected = [
+    {
+      average: 4,
+      min: 1,
+      max: 8,
+      length: 6,
+    },
+    {
+      average: 7,
+      min: -2,
+      max: 18,
+      length: 6,
+    },
+  ];
+
+  input.forEach((argument, index) => {
+    expect(analyzeArray(argument)).toStrictEqual(expected[index]);
   });
 });

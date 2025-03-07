@@ -61,4 +61,18 @@ const caesarCipher = (string, shift) => {
   return charCodes.map((charCode) => String.fromCharCode(charCode)).join('');
 };
 
-export { capitalize, reverseString, calculator, caesarCipher };
+const analyzeArray = (array) => {
+  const average = array.reduce((prev, curr) => prev + curr) / array.length;
+  const min = array.sort((a, b) => a - b)[0];
+  const max = array.sort((a, b) => b - a)[0];
+  const length = array.length;
+
+  return {
+    average,
+    min,
+    max,
+    length,
+  };
+};
+
+export { capitalize, reverseString, calculator, caesarCipher, analyzeArray };
